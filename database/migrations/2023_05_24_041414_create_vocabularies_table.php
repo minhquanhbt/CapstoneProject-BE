@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kanjis', function (Blueprint $table) {
+        Schema::create('vocabularies', function (Blueprint $table) {
             $table->id();
+            $table->string('Word');
+            $table->string('Pronouce');
+            $table->string('Level');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kanjis');
+        Schema::dropIfExists('vocabularies');
     }
 };

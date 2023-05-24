@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vocabularies', function (Blueprint $table) {
+        Schema::create('learneds', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->increments('point');
+            $table->boolean('seen');
+            $table->boolean('remember');
+            $table->dateTime('learned_date');
+            $table->string('learnable_type');
+            $table->integer('learnable_id');
             $table->timestamps();
         });
     }
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vocabularies');
+        Schema::dropIfExists('learneds');
     }
 };

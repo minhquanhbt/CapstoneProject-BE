@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('learned', function (Blueprint $table) {
+        Schema::create('prononces', function (Blueprint $table) {
             $table->id();
+            $table->string('Type');
+            $table->string('Romanji');
+            $table->string('Hiragana')->nullable();
+            $table->string('Katakana')->nullable();
+            $table->integer('kanji_id');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('learned');
+        Schema::dropIfExists('prononces');
     }
 };

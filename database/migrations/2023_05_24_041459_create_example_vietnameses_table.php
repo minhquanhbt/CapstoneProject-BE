@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kanjis_vocabularies', function (Blueprint $table) {
+        Schema::create('example_vietnameses', function (Blueprint $table) {
             $table->id();
+            $table->integer('meaning_id');
+            $table->text('japanese_example');
+            $table->text('vietnamese_example');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kanjis_vocabularies');
+        Schema::dropIfExists('example_vietnameses');
     }
 };
