@@ -10,7 +10,8 @@ class Pronouce extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function kanji(){
+    public function kanji(): BelongsTo
+    {
         return $this->belongsTo(Kanji::class);
     }
 

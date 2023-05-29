@@ -20,12 +20,12 @@ class Vocabulary extends Model
         return $this->belongsToMany(Kanjis::class);
     }
 
-    public function meaningVietnamese(): BelongsToMany
+    public function meaningVietnamese(): HasMany
     {
         return $this->hasMany(MeaningVietnamese::class);
     }
 
-    public function exampleVietnamese(): BelongsToMany
+    public function exampleVietnamese(): HasManyThrough
     {
         return $this->hasManyThrough(ExampleVietnamese::class,MeaningVietnamese::class);
     }

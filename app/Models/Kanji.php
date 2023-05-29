@@ -15,7 +15,8 @@ class Kanji extends Model
         return $this->morphOne(Learned::class, 'learnable');
     }
 
-    public function pronounce(){
+    public function pronounce(): HasMany
+    {
         return $this->hasMany(Pronounce::class);
     }
 
