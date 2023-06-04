@@ -326,6 +326,270 @@ class KanjiSeeder extends Seeder
             Kanji::insert(['character' => '王','group' => 'Vương','meaning' => 'vua', 'level' => 'N3']);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ou','Hiragana'=>'','Katakana'=>'オウ','kanji_id'=>'61']);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'-nou','Hiragana'=>'','Katakana'=>'ノウ','kanji_id'=>'61']);
+            // 2
+            Kanji::insert(['character' => '貝','group' => 'Bối','meaning' => 'con sò', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'bai','Hiragana'=>'','Katakana'=>'バイ','kanji_id'=>'62']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kai','Hiragana'=>'かい','Katakana'=>'','kanji_id'=>'62']);
+            // 3
+            Kanji::insert(['character' => '玉','group' => 'ngọc','meaning' => 'đá quý, ngọc', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gyoku','Hiragana'=>'','Katakana'=>'ギョク','kanji_id'=>'63']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tama','Hiragana'=>'たま','Katakana'=>'','kanji_id'=>'63']);
+            // 4
+            Kanji::insert(['character' => '糸','group' => 'mịch','meaning' => 'sợi tơ, sợi chỉ, dây', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'shi','Hiragana'=>'','Katakana'=>'シ','kanji_id'=>'64']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ito','Hiragana'=>'いと','Katakana'=>'','kanji_id'=>'64']);
+            // 5
+            Kanji::insert(['character' => '石','group' => 'thạch','meaning' => 'đá', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'seki','Hiragana'=>'','Katakana'=>'セキ','kanji_id'=>'65']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kyaku','Hiragana'=>'','Katakana'=>'シャク','kanji_id'=>'65']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'koku','Hiragana'=>'','Katakana'=>'コク','kanji_id'=>'65']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ishi','Hiragana'=>'いし','Katakana'=>'','kanji_id'=>'65']);
+            // 6
+            Kanji::insert(['character' => '草','group' => 'thảo','meaning' => 'cở', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'sou','Hiragana'=>'','Katakana'=>'ソウ','kanji_id'=>'66']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kusa','Hiragana'=>'くさ','Katakana'=>'','kanji_id'=>'66']);
+            // 7
+            Kanji::insert(['character' => '竹','group' => 'trúc','meaning' => 'tre, măng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'chiku','Hiragana'=>'','Katakana'=>'チク','kanji_id'=>'67']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'take','Hiragana'=>'たけ','Katakana'=>'','kanji_id'=>'67']);
+            // 8
+            Kanji::insert(['character' => '虫','group' => 'trùng','meaning' => 'côn trùng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kyuu','Hiragana'=>'','Katakana'=>'チュウ','kanji_id'=>'68']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ki','Hiragana'=>'','Katakana'=>'キ','kanji_id'=>'68']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'mushi','Hiragana'=>'むし','Katakana'=>'','kanji_id'=>'68']);
+            // 9
+            Kanji::insert(['character' => '羽','group' => 'vũ','meaning' => 'cánh, lông vũ', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'u','Hiragana'=>'','Katakana'=>'ウ','kanji_id'=>'69']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ha','Hiragana'=>'は','Katakana'=>'','kanji_id'=>'69']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'wa','Hiragana'=>'わ','Katakana'=>'','kanji_id'=>'69']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'hane','Hiragana'=>'はね','Katakana'=>'','kanji_id'=>'69']);
+            // 10
+            Kanji::insert(['character' => '雲','group' => 'vân','meaning' => 'mây', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'un','Hiragana'=>'','Katakana'=>'ウン','kanji_id'=>'70']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kumo','Hiragana'=>'くも','Katakana'=>'','kanji_id'=>'61']);
+            // 11
+            Kanji::insert(['character' => '園','group' => 'viên','meaning' => 'vườn', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'en','Hiragana'=>'','Katakana'=>'エン','kanji_id'=>'71']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'sono','Hiragana'=>'その','Katakana'=>'','kanji_id'=>'71']);
+            // 12
+            Kanji::insert(['character' => '科','group' => 'khoa','meaning' => 'khoa, bộ môn', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ka','Hiragana'=>'','Katakana'=>'カ','kanji_id'=>'72']);
+            // 13
+            Kanji::insert(['character' => '絵','group' => 'hội','meaning' => 'bức tranh', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kai','Hiragana'=>'','Katakana'=>'カイ','kanji_id'=>'73']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'e','Hiragana'=>'','Katakana'=>'エ','kanji_id'=>'73']);
+            // 14
+            Kanji::insert(['character' => '角','group' => 'giác','meaning' => 'góc, sừng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kaku','Hiragana'=>'','Katakana'=>'カク','kanji_id'=>'74']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kado','Hiragana'=>'かど','Katakana'=>'','kanji_id'=>'74']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsuno','Hiragana'=>'つの','Katakana'=>'','kanji_id'=>'74']);
+            // 15
+            Kanji::insert(['character' => '活','group' => 'hoạt','meaning' => 'hoạt bát, làm sống lại', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'katsu','Hiragana'=>'','Katakana'=>'カツ','kanji_id'=>'75']);
+            // 16
+            Kanji::insert(['character' => '換','group' => 'hoán','meaning' => 'trao đổi', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kan','Hiragana'=>'','Katakana'=>'カン','kanji_id'=>'76']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ka(eru)','Hiragana'=>'か（える）','Katakana'=>'','kanji_id'=>'76']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ka(waru)','Hiragana'=>'か（わる）','Katakana'=>'','kanji_id'=>'76']);
+            // 17
+            Kanji::insert(['character' => '丸','group' => 'hoàn','meaning' => 'tròn', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'','Hiragana'=>'','Katakana'=>'ガン','kanji_id'=>'77']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'maru','Hiragana'=>'まる','Katakana'=>'','kanji_id'=>'78']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'maru(i)','Hiragana'=>'まる（い）','Katakana'=>'','kanji_id'=>'78']);
+            // 18
+            Kanji::insert(['character' => '岩','group' => 'nham','meaning' => 'đá', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gan','Hiragana'=>'','Katakana'=>'ガン','kanji_id'=>'78']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'iwa','Hiragana'=>'いわ','Katakana'=>'','kanji_id'=>'78']);
+            // 19
+            Kanji::insert(['character' => '記','group' => 'kí','meaning' => 'ghi chép', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ki','Hiragana'=>'','Katakana'=>'キ','kanji_id'=>'79']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'shiru(su)','Hiragana'=>'しる（す）','Katakana'=>'','kanji_id'=>'79']);
+            // 20
+            Kanji::insert(['character' => '形','group' => 'hình','meaning' => '	hình dáng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kei','Hiragana'=>'','Katakana'=>'ケイ','kanji_id'=>'80']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gyou','Hiragana'=>'','Katakana'=>'ギョウ','kanji_id'=>'80']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kata','Hiragana'=>'かた','Katakana'=>'','kanji_id'=>'80']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'katachi','Hiragana'=>'かたち','Katakana'=>'','kanji_id'=>'80']);
+            // 21
+            Kanji::insert(['character' => '原','group' => 'nguyên','meaning' => 'nguồn gốc, nguyên bản', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gen','Hiragana'=>'','Katakana'=>'ゲン','kanji_id'=>'81']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'hara','Hiragana'=>'はら','Katakana'=>'','kanji_id'=>'81']);
+            // 22
+            Kanji::insert(['character' => '戸','group' => 'hộ','meaning' => 'cửa, hộ (gia đình)', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ko','Hiragana'=>'','Katakana'=>'コ','kanji_id'=>'82']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'to','Hiragana'=>'と','Katakana'=>'','kanji_id'=>'82']);
+            // 23
+            Kanji::insert(['character' => '黄','group' => 'hoàng','meaning' => 'màu vàng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kou','Hiragana'=>'','Katakana'=>'コウ','kanji_id'=>'83']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ou','Hiragana'=>'','Katakana'=>'オウ','kanji_id'=>'83']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ki','Hiragana'=>'き','Katakana'=>'','kanji_id'=>'83']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ko','Hiragana'=>'こ','Katakana'=>'','kanji_id'=>'83']);
+            // 24
+            Kanji::insert(['character' => '交','group' => 'giao','meaning' => 'quan hệ, giao lưu qua lại', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kou','Hiragana'=>'','Katakana'=>'コウ','kanji_id'=>'84']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'maji(waru)','Hiragana'=>'まじ（わる）','Katakana'=>'','kanji_id'=>'84']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ma(zeru)','Hiragana'=>'ま（ぜる）','Katakana'=>'','kanji_id'=>'84']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ma(zaru)','Hiragana'=>'ま（ざる）','Katakana'=>'','kanji_id'=>'84']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ka(u)','Hiragana'=>'か（う）','Katakana'=>'','kanji_id'=>'84']);
+            // 25
+            Kanji::insert(['character' => '公','group' => 'công','meaning' => 'công cộng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kou','Hiragana'=>'','Katakana'=>'コウ','kanji_id'=>'85']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ooyake','Hiragana'=>'おおやけ','Katakana'=>'','kanji_id'=>'85']);
+            // 26
+            Kanji::insert(['character' => '谷','group' => 'cốc','meaning' => 'thung lũng', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'koku','Hiragana'=>'','Katakana'=>'コク','kanji_id'=>'86']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tani','Hiragana'=>'たに','Katakana'=>'','kanji_id'=>'86']);
+            // 27
+            Kanji::insert(['character' => '細','group' => 'tế','meaning' => 'gầy, thon, tỉ mỉ, chi tiết', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'sai','Hiragana'=>'','Katakana'=>'サイ','kanji_id'=>'87']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'hoso(i)','Hiragana'=>'ほそ（い）','Katakana'=>'','kanji_id'=>'87']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'koma(kai)','Hiragana'=>'こま（かい）','Katakana'=>'','kanji_id'=>'87']);
+            // 28
+            Kanji::insert(['character' => '才','group' => 'tài','meaning' => 'tài năng/ tuổi', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'sai','Hiragana'=>'','Katakana'=>'サイ','kanji_id'=>'88']);
+            // 29
+            Kanji::insert(['character' => '算','group' => 'toán','meaning' => 'tính toán', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'san','Hiragana'=>'','Katakana'=>'サン','kanji_id'=>'89']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'soro','Hiragana'=>'そろ','Katakana'=>'','kanji_id'=>'89']);
+            // 30
+            Kanji::insert(['character' => '寺','group' => 'tự','meaning' => 'đền, miếu', 'level' => 'N3']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ji','Hiragana'=>'','Katakana'=>'ジ','kanji_id'=>'90']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tera','Hiragana'=>'てら','Katakana'=>'','kanji_id'=>'90']);
+            // N2
+            // 1
+            Kanji::insert(['character' => '禁','group' => 'Cấm','meaning' => 'cấm', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kin','Hiragana'=>'','Katakana'=>'キン','kanji_id'=>'91']);
+            // 2
+            Kanji::insert(['character' => '煙','group' => 'Yên','meaning' => 'khói, thuốc lá', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'en','Hiragana'=>'','Katakana'=>'エン','kanji_id'=>'92']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kemuri','Hiragana'=>'けむり','Katakana'=>'','kanji_id'=>'92']);
+            // 3
+            Kanji::insert(['character' => '静','group' => 'tĩnh','meaning' => 'yên tĩnh', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'sei','Hiragana'=>'','Katakana'=>'セイ','kanji_id'=>'93']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'jou','Hiragana'=>'','Katakana'=>'ジョウ','kanji_id'=>'93']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'shizu(ka)','Hiragana'=>'','Katakana'=>'しず(か)','kanji_id'=>'93']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'shizu(maru)','Hiragana'=>'','Katakana'=>'しず(まる)','kanji_id'=>'93']);
+            // 4
+            Kanji::insert(['character' => '危','group' => 'nguy','meaning' => 'nguy hiểm', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ki','Hiragana'=>'','Katakana'=>'キ','kanji_id'=>'94']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'abu(nai)','Hiragana'=>'あぶ(ない)','Katakana'=>'','kanji_id'=>'94']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'aya(ui)','Hiragana'=>'あや(うい)','Katakana'=>'','kanji_id'=>'94']);
+            // 5
+            Kanji::insert(['character' => '険','group' => 'hiểm','meaning' => 'dựng đứng, dốc/ nghiêm khắc, khắt khe', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ken','Hiragana'=>'','Katakana'=>'ケン','kanji_id'=>'95']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kewa(shi)','Hiragana'=>'けわ(しい)','Katakana'=>'','kanji_id'=>'95']);
+            // 6
+            Kanji::insert(['character' => '関','group' => 'Quan','meaning' => 'liên quan đến', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kan','Hiragana'=>'','Katakana'=>'カン','kanji_id'=>'96']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kaka(waru)','Hiragana'=>'かか(わる)','Katakana'=>'','kanji_id'=>'96']);
+            // 7
+            Kanji::insert(['character' => '係   ','group' => 'hệ','meaning' => 'quan hệ, chịu trách nhiệm', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kei','Hiragana'=>'','Katakana'=>'ケイ','kanji_id'=>'97']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kakari','Hiragana'=>'かかり','Katakana'=>'','kanji_id'=>'97']);
+            // 8
+            Kanji::insert(['character' => '落','group' => 'lạc','meaning' => 'rơi, rụng', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'raku','Hiragana'=>'','Katakana'=>'ラク','kanji_id'=>'98']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'o(chisu)','Hiragana'=>'お(ちる)','Katakana'=>'','kanji_id'=>'99']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'o(tosu)','Hiragana'=>'お(とす)','Katakana'=>'','kanji_id'=>'99']);
+            // 9
+            Kanji::insert(['character' => '石','group' => 'thạch','meaning' => 'đá', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'seki','Hiragana'=>'','Katakana'=>'セキ','kanji_id'=>'99']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kyaku','Hiragana'=>'','Katakana'=>'シャク','kanji_id'=>'99']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'koku','Hiragana'=>'','Katakana'=>'コク','kanji_id'=>'99']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ishi','Hiragana'=>'いし','Katakana'=>'','kanji_id'=>'98']);
+            // 10
+            Kanji::insert(['character' => '飛','group' => 'phi','meaning' => 'bay', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'hi','Hiragana'=>'','Katakana'=>'ヒ','kanji_id'=>'100']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'to(bu)','Hiragana'=>'と(ぶ)','Katakana'=>'','kanji_id'=>'100']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'to(basu)','Hiragana'=>'と(ばす)','Katakana'=>'','kanji_id'=>'100']);
+            // 11
+            Kanji::insert(['character' => '駐','group' => 'trú','meaning' => '', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'chuu','Hiragana'=>'','Katakana'=>'チュウ','kanji_id'=>'101']);
+            // 12
+            Kanji::insert(['character' => '捨','group' => 'xả','meaning' => 'vứt, ném', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'sha','Hiragana'=>'','Katakana'=>'シャ','kanji_id'=>'102']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'su(teru)','Hiragana'=>'す(てる)','Katakana'=>'','kanji_id'=>'102']);
+            // 13
+            Kanji::insert(['character' => '遊','group' => 'du','meaning' => 'chơi, du hành', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'yuu','Hiragana'=>'','Katakana'=>'ユウ','kanji_id'=>'103']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'yu','Hiragana'=>'','Katakana'=>'ユ','kanji_id'=>'103']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'aso(bu)','Hiragana'=>'あそ(ぶ)','Katakana'=>'','kanji_id'=>'103']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'aso(basu)','Hiragana'=>'あそ(ばす)','Katakana'=>'','kanji_id'=>'103']);
+            // 14
+            Kanji::insert(['character' => '泳','group' => 'vịnh','meaning' => 'bơi', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ei','Hiragana'=>'','Katakana'=>'エイ','kanji_id'=>'104']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'oyo(gu)','Hiragana'=>'およ(ぐ)','Katakana'=>'','kanji_id'=>'104']);
+            // 15
+            Kanji::insert(['character' => '喫','group' => 'Ngật','meaning' => 'Ăn uống, Nhận vào', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kitsu','Hiragana'=>'','Katakana'=>'キツ','kanji_id'=>'105']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'no(mu)','Hiragana'=>'の(む)','Katakana'=>'','kanji_id'=>'105']);
+            // 16
+            Kanji::insert(['character' => '非','group' => 'phi','meaning' => 'Trái, không phải', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'hi','Hiragana'=>'','Katakana'=>'ヒ','kanji_id'=>'106']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ara(zu)','Hiragana'=>'あら(ず)','Katakana'=>'','kanji_id'=>'106']);
+            // 17
+            Kanji::insert(['character' => '御','group' => 'ngự','meaning' => 'Kẻ cầm cương xe', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gyo','Hiragana'=>'','Katakana'=>'ギョ','kanji_id'=>'107']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'go','Hiragana'=>'','Katakana'=>'ゴ','kanji_id'=>'107']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'on','Hiragana'=>'おん','Katakana'=>'','kanji_id'=>'107']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'mi','Hiragana'=>'み','Katakana'=>'','kanji_id'=>'107']);
+            // 18
+            Kanji::insert(['character' => '常','group' => 'thường','meaning' => 'Thường (lâu mãi)', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'jou','Hiragana'=>'','Katakana'=>'ジョウ','kanji_id'=>'108']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsune','Hiragana'=>'つね','Katakana'=>'','kanji_id'=>'108']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'toko','Hiragana'=>'とこ','Katakana'=>'','kanji_id'=>'108']);
+            // 19
+            Kanji::insert(['character' => '受','group' => 'thụ','meaning' => 'Chịu nhận lấy, Đựng chứa', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ju','Hiragana'=>'','Katakana'=>'ジュ','kanji_id'=>'109']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'u(keru)','Hiragana'=>'う(ける)','Katakana'=>'','kanji_id'=>'109']);
+            // 20
+            Kanji::insert(['character' => '付','group' => 'phó','meaning' => 'Giao phó cho', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'phu','Hiragana'=>'','Katakana'=>'フ','kanji_id'=>'110']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsu(keru)','Hiragana'=>'つ(ける)','Katakana'=>'','kanji_id'=>'110']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsuki','Hiragana'=>'つき','Katakana'=>'','kanji_id'=>'110']);
+            // 21
+            Kanji::insert(['character' => '案','group' => 'án','meaning' => 'dự thảo, phƣơng án, đề xuất', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'an','Hiragana'=>'','Katakana'=>'アン','kanji_id'=>'111']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsukue','Hiragana'=>'つくえ','Katakana'=>'','kanji_id'=>'111']);
+            // 22
+            Kanji::insert(['character' => '内','group' => 'nội','meaning' => 'bên trong, nhà tôi...', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'nai','Hiragana'=>'','Katakana'=>'ナイ','kanji_id'=>'112']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'dai','Hiragana'=>'','Katakana'=>'ダイ','kanji_id'=>'112']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'uchi','Hiragana'=>'うち','Katakana'=>'','kanji_id'=>'112']);
+            // 23
+            Kanji::insert(['character' => '議','group' => 'nghị','meaning' => 'Bàn...', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'gi','Hiragana'=>'','Katakana'=>'ギ','kanji_id'=>'113']);
+            // 24
+            Kanji::insert(['character' => '化','group' => 'hoá','meaning' => 'Biến hóa', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ka','Hiragana'=>'','Katakana'=>'カ','kanji_id'=>'114']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ke','Hiragana'=>'','Katakana'=>'ケ','kanji_id'=>'114']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ba(keru)','Hiragana'=>'ば(ける)','Katakana'=>'','kanji_id'=>'114']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'ba(kasu)','Hiragana'=>'ば(かす)','Katakana'=>'','kanji_id'=>'114']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'fu(furu)','Hiragana'=>'ふ(ける)','Katakana'=>'','kanji_id'=>'114']);
+            // 25
+            Kanji::insert(['character' => '階','group' => 'giai','meaning' => 'tầng, bậc thềm', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kai','Hiragana'=>'','Katakana'=>'カイ','kanji_id'=>'115']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'kizahashi','Hiragana'=>'きざはし','Katakana'=>'','kanji_id'=>'115']);
+            // 26
+            Kanji::insert(['character' => '段','group' => 'đoạn','meaning' => 'bậc, đoạn, giai đoạn', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'dan','Hiragana'=>'','Katakana'=>'ダン','kanji_id'=>'116']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'tan','Hiragana'=>'','Katakana'=>'タン','kanji_id'=>'117']);
+            // 27
+            Kanji::insert(['character' => '営   ','group' => 'doanh','meaning' => 'kinh doanh, điều khiển', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ei','Hiragana'=>'','Katakana'=>'エイ','kanji_id'=>'117']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'itona(mu)','Hiragana'=>'いとな(む)','Katakana'=>'','kanji_id'=>'117']);
+            // 28
+            Kanji::insert(['character' => '放','group' => 'phóng','meaning' => 'tuột khỏi, xa rời, cách xa', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'hou','Hiragana'=>'','Katakana'=>'ホウ','kanji_id'=>'118']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'hou(ru)','Hiragana'=>'ほう(る)','Katakana'=>'','kanji_id'=>'118']);
+            // 29
+            Kanji::insert(['character' => '押','group' => 'áp','meaning' => 'ấn, đẩy', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ou','Hiragana'=>'','Katakana'=>'オウ','kanji_id'=>'119']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'o(su)','Hiragana'=>'お(す)','Katakana'=>'','kanji_id'=>'119']);
+            // 30
+            Kanji::insert(['character' => '準','group' => 'chuẩn','meaning' => '', 'level' => 'N2']);
+            Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'jun','Hiragana'=>'','Katakana'=>'ジュン','kanji_id'=>'120']);
+            Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'mizumori','Hiragana'=>'みずもり','Katakana'=>'','kanji_id'=>'120']);
         }
     }
 }
