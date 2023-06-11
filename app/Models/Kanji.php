@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Kanji extends Model
 {
@@ -22,6 +23,6 @@ class Kanji extends Model
 
     public function vocabularies(): BelongsToMany
     {
-        return $this->belongsToMany(Vocabularies::class);
+        return $this->belongsToMany(Vocabulary::class);
     }
 }

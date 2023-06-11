@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pronouce extends Model
+class Pronounce extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -14,5 +14,4 @@ class Pronouce extends Model
     {
         return $this->belongsTo(Kanji::class);
     }
-
 }
