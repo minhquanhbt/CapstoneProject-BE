@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kanjis_vocabularies', function (Blueprint $table) {
+        Schema::create('kanji_vocabulary', function (Blueprint $table) {
             $table->id();
             $table->integer('vocabulary_id');
             $table->integer('kanji_id');
