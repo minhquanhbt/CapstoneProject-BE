@@ -20,7 +20,7 @@ class VocabularySeeder extends Seeder
         $vocabulary = Vocabulary::insertGetId(['Word' => '中日','Pronouce' => 'ちゅうにち', 'Level' => 'N5']);
         $meaning = MeaningVietnamese::insertGetId(['meaning' => 'Ngày giữa','vocabulary_id' => $vocabulary]);
         ExampleVietnamese::insert(['japanese_example' => '中日間は本当にお互いを知り合うところまでは到達していない。', 
-                                    'vietnamese_example' => 'Giữa Nhật Bản vẫn chưa đạt được sự hiểu biết thực sự và Trung Quốc.','meaning_id' => $meaning]);
+                                    'vietnamese_example' => 'Giữa Nhật Bản và Trung Quốc vẫn chưa đạt được sự hiểu biết thực sự.','meaning_id' => $meaning]);
         $kanji = Kanji::where('character', '中')->first();
         $kanji->vocabularies()->attach($vocabulary);
         $kanji = Kanji::where('character', '日')->first();

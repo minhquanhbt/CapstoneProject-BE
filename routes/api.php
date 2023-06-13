@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KanjiController;
 
 /*
@@ -18,6 +19,10 @@ use App\Http\Controllers\KanjiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::controller(AuthController::class)->group(function(){
+    Route::post('login', 'login');
+    // Route::post('register', 'register');
+    // Route::get('accept/{token}', 'accept')->name('accept');
+});
 //Kanjis+Vocabularies Controller
 Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo']);
