@@ -29,7 +29,7 @@ class AuthController extends BaseController
         } 
         else
         {
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised'], 400);
         } 
     }
 }
