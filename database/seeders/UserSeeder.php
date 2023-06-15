@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@finalproject.com',
             'role' => User::ROLE_ADMIN,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);
@@ -31,6 +33,7 @@ class UserSeeder extends Seeder
             'level' => 'N5',
             'point' => 0,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);
@@ -42,6 +45,7 @@ class UserSeeder extends Seeder
             'level' => 'N2',
             'point' => 7000,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);
@@ -53,6 +57,7 @@ class UserSeeder extends Seeder
             'level' => 'N3',
             'point' => 4000,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);
@@ -64,6 +69,7 @@ class UserSeeder extends Seeder
             'level' => 'N4',
             'point' => 2000,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);
@@ -75,6 +81,7 @@ class UserSeeder extends Seeder
             'level' => 'N5',
             'point' => 1000,
             'password' => Hash::make(123456789),
+            'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
         ]);

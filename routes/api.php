@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::controller(AuthController::class)->group(function(){
     Route::post('login', 'login');
-    // Route::post('register', 'register');
-    // Route::get('accept/{token}', 'accept')->name('accept');
+    Route::post('register', 'register');
+    Route::post('accepted', 'accept')->name('accept');
 });
 //Kanjis+Vocabularies Controller
 Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo']);
