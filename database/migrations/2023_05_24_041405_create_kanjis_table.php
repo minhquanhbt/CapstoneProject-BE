@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('character');
             $table->string('group');
             $table->string('meaning');
-            $table->string('level');
+            $table->integer('level');
             $table->timestamps();
         });
     }

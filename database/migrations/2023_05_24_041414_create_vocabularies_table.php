@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->id();
-            $table->string('Word');
-            $table->string('Pronouce');
-            $table->string('Level');
+            $table->string('word');
+            $table->string('pronouce');
+            $table->integer('level');
             $table->timestamps();
         });
     }

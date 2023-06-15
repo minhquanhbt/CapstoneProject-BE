@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('level')->default('N4');
+            $table->integer('level')->default(4);
             $table->unsignedInteger('point')->default('1')->nullable();
             $table->rememberToken();
             $table->timestamps();
