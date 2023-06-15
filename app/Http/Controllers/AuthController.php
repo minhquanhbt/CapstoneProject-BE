@@ -57,26 +57,29 @@ class AuthController extends BaseController
         while (User::where('token', $token)->first());
         $password = Hash::make($request->password);
         if($request->level){
-            $level = $request->level;
             switch ($request->level){
                 case "N5":
+                    $level = 5;
                     $point = USER::LV_N5;
                     break;
                 case "N4":
+                    $level = 4;
                     $point = USER::LV_N4;
                     break;
                 case "N3":
+                    $level = 3;
                     $point = USER::LV_N3;
                     break;
                 case "N2":
+                    $level = 2;
                     $point = USER::LV_N2;
                     break;
                 case "N1":
+                    $level = 1;
                     $point = USER::LV_N1;
                     break;
             }
         }
-        else{$level = "N4";}
         //create a new invite record
         $new = User::create([
             'email' => $request->email,

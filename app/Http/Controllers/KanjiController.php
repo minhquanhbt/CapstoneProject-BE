@@ -11,16 +11,25 @@ use Illuminate\Support\Facades\Auth;
 
 class KanjiController extends Controller
 {
-    public function getMainInfo(){
+    public function getMainLogedInfo(){
         $current = Auth::user();
-        if($current){
-            $kanjis = Kanji::where('level','<=',$current->level);
-            $vocabularies = Vocabulary::where('Level','<=',$current->level);
+        $kanjis = Kanji::where('level','>=',$current->level)->get();
+        $vocabularies = Vocabulary::where('Level','>=',$current->level)->get();
+        $kanji_res = $kanjis->random(5);
+        $vocabulary_res = $vocabularies->random(5);
+        $result = new \Illuminate\Database\Eloquent\Collection;
+        $result = $result->merge($kanji_res);
+        $result = $result->merge($vocabulary_res);
+        try{
+            return ['data' => $result];
+
+        }catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
         }
-        else{
-            $kanjis = Kanji::all();
-            $vocabularies = Vocabulary::all();
-        }
+    }
+    public function getMainInfo(){
+        $kanjis = Kanji::all();
+        $vocabularies = Vocabulary::all();
         $kanji_res = $kanjis->random(5);
         $vocabulary_res = $vocabularies->random(5);
         $result = new \Illuminate\Database\Eloquent\Collection;
