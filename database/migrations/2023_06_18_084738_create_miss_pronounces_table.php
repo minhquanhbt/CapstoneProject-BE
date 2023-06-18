@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vocabularies', function (Blueprint $table) {
+        Schema::create('miss_pronounces', function (Blueprint $table) {
             $table->id();
-            $table->string('word');
-            $table->string('pronounce');
-            $table->integer('level');
+            $table->string('pronounce')->nullable();
+            $table->integer('vocabulary_id');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vocabularies');
+        Schema::dropIfExists('miss_pronounces');
     }
 };
