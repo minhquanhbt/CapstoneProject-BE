@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('learneds', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->unsignedInteger('point');
+            $table->bigInteger('point');
             $table->boolean('seen');
             $table->boolean('remember');
             $table->dateTime('learned_date');

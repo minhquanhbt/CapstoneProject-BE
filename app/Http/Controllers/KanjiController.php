@@ -8,15 +8,17 @@ use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kanji;
+use App\Models\Learned;
 use App\Models\missPronounces;
 use App\Models\Vocabulary;
+use App\Models\User;
 
-class KanjiController extends Controller
+class KanjiController extends BaseController
 {
     public function getMainLogedInfo(){
         $current = Auth::user();
-        $kanjis = Kanji::where('level','>=',$current->level)->get();
-        $vocabularies = Vocabulary::where('Level','>=',$current->level)->get();
+        $kanjis = Kanji::with('pronounces')->where('level','>=',$current->level)->get();
+        $vocabularies = Vocabulary::with('meaningVietnamese')->where('Level','>=',$current->level)->get();
         $kanji_res = $kanjis->random(10);
         $vocabulary_res = $vocabularies->random(5);
         $result = new Collection;
@@ -46,9 +48,17 @@ class KanjiController extends Controller
     }
 
     // make question
-    private function makeQuest($number){
-        $vocabularies = Vocabulary::all();
-        $kanjis = Kanji::with('pronounces')->get();
+    private function makeQuest($number, $user){
+        $kanjis_learned = Learned::where('learnable_type', 'App\Models\Kanji')->where('user_id', $user->id)->get();
+        $kanjis_learned = Kanji::where('id', $kanjis_learned->learnable_id)->get();
+        $vocabularies_learned = Learned::where('learnable_type', 'App\Models\Vocabulary')->where('user_id', $user->id)->get();
+        $vocabularies_learned = Kanji::where('id', $vocabularies_learned->learnable_id)->get();
+        $vocabularies = Vocabulary::where('Level','>=',$user->level)->get();
+        $kanjis = Kanji::with('pronounces')->where('Level','>=',$user->level)->get();
+        $kanjis = $kanjis->merge($kanjis_learned);
+        $kanjis = $kanjis->unique('id');
+        $vocabularies = $vocabularies->merge($vocabularies_learned);
+        $vocabularies = $vocabularies->unique('id');
         $collection = new Collection;
         for($x = 0; $x < $number; $x++){
             $type = 1;
@@ -68,6 +78,7 @@ class KanjiController extends Controller
                     $arr[$i] = ($result[$i]->pronounces[0]->Hiragana?$result[$i]->pronounces[0]->Hiragana:$result[$i]->pronounces[0]->Katakana);
                 }
                 $temp = $temp->merge(["option" => $arr]);
+                $temp = $temp->merge(["type" => 'kanji']);
                 $collection->push($temp);
             }
             //vocabulary
@@ -86,6 +97,7 @@ class KanjiController extends Controller
                     $arr[$i] = $result[$i]->pronounce;
                 }
                 $temp = $temp->merge(["option" => $arr]);
+                $temp = $temp->merge(["type" => 'vocabulary']);
                 $collection->push($temp);
             }
         }
@@ -96,8 +108,125 @@ class KanjiController extends Controller
     
     public function Quiz(){
         try{
-            return $this->makeQuest(1);
+            $current = Auth::user();
+            return $this->makeQuest(1, $current);
 
+        }catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    //point caculate
+    private function PointCalc($user, $result, $question, $type){
+        if($type == 'kanji'){
+            $leanred = Kanji::where('character', $question->character)->first();
+            if(Learned::where('user_id', $user->id)->where('seen',true)->where('remember',true)
+                ->where('learnable_id',$leanred->id)->where('learnable_type','App\Models\Kanji')->first()){
+                return;
+            }
+        }
+        else{
+            $leanred = Vocabulary::where('word', $question->word)->first();
+            if(Learned::where('user_id', $user->id)->where('seen',true)->where('remember',true)
+                ->where('learnable_id',$leanred->id)->where('learnable_type','App\Models\Vocabulary')->first()){
+                return;
+            }
+        }
+        $Qa = pow(10,$user->point/4000);
+        switch ($question->level){
+            case 5:
+                $Qb = pow(10,USER::LV_N5/4000);
+                break;
+            case 4:
+                $Qb = pow(10,USER::LV_N4/4000);
+                break;
+            case 3:
+                $Qb = pow(10,USER::LV_N3/4000);
+                break;
+            case 2:
+                $Qb = pow(10,USER::LV_N2/4000);
+                break;
+            case 1:
+                $Qb = pow(10,USER::LV_N1/4000);
+                break;
+        }
+        switch ($user->level){
+            case 5:
+                $k = 25;
+                break;
+            case 4:
+                $k = 20;
+                break;
+            case 3:
+                $k = 15;
+                break;
+            case 2:
+                $k = 10;
+                break;
+            case 1:
+                $k = 5;
+                break;
+        }
+        $Ea = $Qa/($Qa+$Qb);
+        if($result){
+            $Aa=2;
+        }
+        else{
+            $Aa=0;
+        }
+        $point = $k*($Aa-$Ea);
+	    $Ra = $user->point + $point;
+        $user = User::find($user->id);
+        $user->point = round($Ra);
+        $user->save();
+        if($Ra>=User::LV_N1){
+            $lvl = 1;
+        }
+        if($Ra<User::LV_N1){
+            $lvl = 2;
+        }
+        if($Ra<User::LV_N2){
+            $lvl = 3;
+        }
+        if($Ra<User::LV_N3){
+            $lvl = 4;
+        }
+        if($Ra<User::LV_N4){
+            $lvl = 5;
+        }
+        $user->level = round($lvl);
+        $user->save();
+        $word_learned = new Learned;
+        $word_learned->user_id = $user->id;
+        $word_learned->seen = true;
+        $word_learned->remember = true;
+        $word_learned->point = round($point);
+        $word_learned->learned_date = \Carbon\Carbon::now();
+        $word_learned->learnable()->associate($leanred)->save();
+    }
+    //response Quiz Answer
+    
+    public function QuizAnswer(Request $request){
+        try{
+            $current = Auth::user();
+            $result = false;
+            if($request->type === 'kanji'){
+                $question = Kanji::with('pronounces')->where('character', $request->question)->first();
+                for($i=0; $i < count($question->pronounces); $i++){
+                    if(($question->pronounces[$i]->Katakana == $request->answer)||($question->pronounces[$i]->Hiragana == $request->answer)){
+                        $result = true;
+                        break;
+                    }
+                }
+            }
+            else{
+                $question = Vocabulary::where('word', $request->question)->first();
+                if($question->pronounce == $request->answer){
+                    $result = true;
+                }
+            }
+            $this->PointCalc($current, $result, $question, $request->type);
+            return $this->sendResponse($result,($result?'Correct!':'Wrong'));
         }catch(Exception $e){
             return response()->json(['message' => $e->getMessage()], 400);
         }
