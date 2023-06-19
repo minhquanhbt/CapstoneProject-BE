@@ -50,18 +50,26 @@ class KanjiController extends BaseController
     // make question
     private function makeQuest($number, $user){
         $kanjis_learned = Learned::where('learnable_type', 'App\Models\Kanji')->where('user_id', $user->id)->get();
-        $kanjis_learned = Kanji::where('id', $kanjis_learned->learnable_id)->get();
         $vocabularies_learned = Learned::where('learnable_type', 'App\Models\Vocabulary')->where('user_id', $user->id)->get();
-        $vocabularies_learned = Kanji::where('id', $vocabularies_learned->learnable_id)->get();
         $vocabularies = Vocabulary::where('Level','>=',$user->level)->get();
         $kanjis = Kanji::with('pronounces')->where('Level','>=',$user->level)->get();
-        $kanjis = $kanjis->merge($kanjis_learned);
-        $kanjis = $kanjis->unique('id');
-        $vocabularies = $vocabularies->merge($vocabularies_learned);
-        $vocabularies = $vocabularies->unique('id');
+        if(!$kanjis_learned->isEmpty()){
+            foreach($kanjis_learned as $learned){
+                $tmp = Kanji::where('id', $learned->learnable_id)->get();
+                $kanjis = $kanjis->merge($tmp);
+                $kanjis = $kanjis->unique('id');
+            }
+        }
+        if(!$vocabularies_learned->isEmpty()){
+            foreach($vocabularies_learned as $learned){
+                $tmp = Kanji::where('id', $learned->learnable_id)->get();
+                $vocabularies = $vocabularies->merge($tmp);
+                $vocabularies = $vocabularies->unique('id');
+            }
+        }
         $collection = new Collection;
         for($x = 0; $x < $number; $x++){
-            $type = 1;
+            $type = rand(0,1);
             //kanji
             if($type===0){
                 $res = $kanjis->random(1);
@@ -199,7 +207,7 @@ class KanjiController extends BaseController
         $word_learned = new Learned;
         $word_learned->user_id = $user->id;
         $word_learned->seen = true;
-        $word_learned->remember = true;
+        $word_learned->remember = $result;
         $word_learned->point = round($point);
         $word_learned->learned_date = \Carbon\Carbon::now();
         $word_learned->learnable()->associate($leanred)->save();
@@ -210,7 +218,7 @@ class KanjiController extends BaseController
         try{
             $current = Auth::user();
             $result = false;
-            if($request->type === 'kanji'){
+            if($request->type == 'kanji'){
                 $question = Kanji::with('pronounces')->where('character', $request->question)->first();
                 for($i=0; $i < count($question->pronounces); $i++){
                     if(($question->pronounces[$i]->Katakana == $request->answer)||($question->pronounces[$i]->Hiragana == $request->answer)){
@@ -228,7 +236,7 @@ class KanjiController extends BaseController
             $this->PointCalc($current, $result, $question, $request->type);
             return $this->sendResponse($result,($result?'Correct!':'Wrong'));
         }catch(Exception $e){
-            return response()->json(['message' => $e->getMessage()], 400);
+            return $this->sendError('Error!', ['error'=>$e], 400);
         }
     }
 }
