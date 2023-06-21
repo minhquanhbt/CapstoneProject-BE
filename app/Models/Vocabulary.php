@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Vocabulary extends Model
 {
@@ -18,6 +22,11 @@ class Vocabulary extends Model
     public function kanjis(): BelongsToMany
     {
         return $this->belongsToMany(Kanjis::class);
+    }
+
+    public function missPronounces(): HasMany
+    {
+        return $this->hasMany(missPronounces::class);
     }
 
     public function meaningVietnamese(): HasMany

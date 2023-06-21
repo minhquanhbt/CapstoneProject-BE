@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Kanji extends Model
@@ -16,7 +18,7 @@ class Kanji extends Model
         return $this->morphOne(Learned::class, 'learnable');
     }
 
-    public function pronounce(): HasMany
+    public function pronounces(): HasMany
     {
         return $this->hasMany(Pronounce::class);
     }

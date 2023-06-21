@@ -25,4 +25,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('accepted', 'accept')->name('accept');
 });
 //Kanjis+Vocabularies Controller
-Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo']);
+Route::get('v1/getMainLogedInfo',[KanjiController::class,'getMainLogedInfo'])->middleware('auth:sanctum')->name('loged.mainInfo');
+Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo'])->name('mainInfo');
+Route::get('v1/quiz',[KanjiController::class,'Quiz'])->middleware('auth:sanctum')->name('getQuiz');
+Route::post('v1/quiz-answer',[KanjiController::class,'QuizAnswer'])->middleware('auth:sanctum')->name('sendAnswer');
