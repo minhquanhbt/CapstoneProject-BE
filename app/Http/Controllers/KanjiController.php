@@ -47,12 +47,36 @@ class KanjiController extends BaseController
         }
     }
 
+    //get Kanji Detail
+    
+    public function getDetail(Request $request){
+        $kanji = Kanji::with('pronounces')->with('vocabularies')->find($request->kanji_id);
+        try{
+            if($request->user_id){
+                if(!(Learned::where('learnable_type','App\Models\Kanji')->where('learnable_id',$kanji->id)->where('user_id',$request->user_id)->exists()))
+                {
+                    $word_learned = new Learned;
+                    $word_learned->user_id = $request->user_id;
+                    $word_learned->seen = true;
+                    $word_learned->remember = false;    
+                    $word_learned->point = 0;
+                    $word_learned->learned_date = \Carbon\Carbon::now();
+                    $word_learned->learnable()->associate($kanji)->save();
+                }
+            }
+            return ['data' => $kanji];
+
+        }catch(Exception $e){
+            return $this->sendError('Error.', ['error'=>$e->getMessage()], 400);
+        }
+    }
+
     // make question
-    private function makeQuest($number, $user){
+    private function makeQuest($number, $user, $level){
         $kanjis_learned = Learned::where('learnable_type', 'App\Models\Kanji')->where('user_id', $user->id)->get();
         $vocabularies_learned = Learned::where('learnable_type', 'App\Models\Vocabulary')->where('user_id', $user->id)->get();
-        $vocabularies = Vocabulary::where('Level','>=',$user->level)->get();
-        $kanjis = Kanji::with('pronounces')->where('Level','>=',$user->level)->get();
+        $vocabularies = Vocabulary::where('Level','>=',$level)->get();
+        $kanjis = Kanji::with('pronounces')->where('Level','>=',$level)->get();
         if(!$kanjis_learned->isEmpty()){
             foreach($kanjis_learned as $learned){
                 $tmp = Kanji::where('id', $learned->learnable_id)->get();
@@ -117,7 +141,7 @@ class KanjiController extends BaseController
     public function Quiz(){
         try{
             $current = Auth::user();
-            return $this->makeQuest(1, $current);
+            return $this->makeQuest(1, $current, $current->level);
 
         }catch(Exception $e){
             return response()->json(['message' => $e->getMessage()], 400);

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KanjiController;
+use App\Http\Controllers\VocabularyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,13 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('accepted', 'accept')->name('accept');
 });
 //Kanjis+Vocabularies Controller
+//Auth
 Route::get('v1/getMainLogedInfo',[KanjiController::class,'getMainLogedInfo'])->middleware('auth:sanctum')->name('loged.mainInfo');
-Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo'])->name('mainInfo');
 Route::get('v1/quiz',[KanjiController::class,'Quiz'])->middleware('auth:sanctum')->name('getQuiz');
 Route::post('v1/quiz-answer',[KanjiController::class,'QuizAnswer'])->middleware('auth:sanctum')->name('sendAnswer');
+Route::post('v1/kanji/loged-detail',[KanjiController::class,'getLogedDetail'])->middleware('auth:sanctum')->name('loged.kanjiDetail');
+Route::post('v1/vocabulary/loged-detail',[VocabularyController::class,'getLogedDetail'])->middleware('auth:sanctum')->name('loged.vocabularyDetail');
+//UnAuth
+Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo'])->name('mainInfo');
+Route::post('v1/kanji/detail',[KanjiController::class,'getDetail'])->name('kanjiDetail');
+Route::post('v1/vocabulary/detail',[VocabularyController::class,'getDetail'])->name('vocabularyDetail');
