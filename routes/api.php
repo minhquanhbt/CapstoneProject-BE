@@ -36,3 +36,5 @@ Route::post('v1/vocabulary/loged-detail',[VocabularyController::class,'getLogedD
 Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo'])->name('mainInfo');
 Route::post('v1/kanji/detail',[KanjiController::class,'getDetail'])->name('kanjiDetail');
 Route::post('v1/vocabulary/detail',[VocabularyController::class,'getDetail'])->name('vocabularyDetail');
+//search
+Route::post('search',[VocabularyController::class,'search'])->name('search');
