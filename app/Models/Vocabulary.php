@@ -21,7 +21,7 @@ class Vocabulary extends Model
 
     public function kanjis(): BelongsToMany
     {
-        return $this->belongsToMany(Kanjis::class);
+        return $this->belongsToMany(Kanji::class);
     }
 
     public function missPronounces(): HasMany

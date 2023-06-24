@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('example_vietnameses', function (Blueprint $table) {
             $table->id();
-            $table->integer('meaning_id');
+            $table->integer('meaning_vietnamese_id');
             $table->text('japanese_example');
             $table->text('vietnamese_example');
             $table->timestamps();
