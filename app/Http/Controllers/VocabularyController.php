@@ -52,25 +52,25 @@ class VocabularyController extends BaseController
     {
         // Pronounce search
         if(preg_match(VocabularyController::KataHira, $request->key)){
-            $kanji = Kanji::whereHas('pronounces', function($query) use($request)
+            $kanji = Kanji::with('pronounces')->whereHas('pronounces', function($query) use($request)
             {
                 $query->where('pronounces.Hiragana','LIKE', "%$request->key%")->orWhere('pronounces.Katakana','LIKE', "%$request->key%");
             })->take(5)->get();
-            $vocabulary = Vocabulary::where('pronounce','LIKE', "%$request->key%")->take(5)->get();
+            $vocabulary = Vocabulary::with('meaningVietnamese')->where('pronounce','LIKE', "%$request->key%")->take(5)->get();
 
         }
         //character search
         elseif(preg_match(VocabularyController::Kanji, $request->key)){
-            $vocabulary = Vocabulary::where('word','LIKE', "%$request->key%")->take(5)->get();
-            $kanji = Kanji::where('character','LIKE', "%$request->key%")->take(5)->get();
+            $vocabulary = Vocabulary::with('meaningVietnamese')->where('word','LIKE', "%$request->key%")->take(5)->get();
+            $kanji = Kanji::with('pronounces')->where('character','LIKE', "%$request->key%")->take(5)->get();
         }
         //meaning and alphabet search
         else{
-            $vocabulary = Vocabulary::whereHas('meaningVietnamese', function($query) use($request)
+            $vocabulary = Vocabulary::with('meaningVietnamese')->whereHas('meaningVietnamese', function($query) use($request)
             {
                 $query->where('meaning','LIKE', "%$request->key%");
             })->take(5)->get();
-            $kanji = Kanji::whereHas('pronounces', function($query) use($request)
+            $kanji = Kanji::with('pronounces')->whereHas('pronounces', function($query) use($request)
             {
                 $query->where('Romanji','LIKE', "%$request->key%");
             })->orWhere('meaning','LIKE', "%$request->key%")->orWhere('group','LIKE', "%$request->key%")->take(5)->get();
