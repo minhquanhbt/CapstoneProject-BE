@@ -24,6 +24,8 @@ class AuthController extends BaseController
             $success['token'] =  $user->createToken('MyApp')->plainTextToken; 
             $success['name'] =  $user->name;
             $success['email'] =  $user->email;
+            $success['level'] =  $user->level;
+            $success['point'] =  $user->point;
             $success['role'] =  $user->role;
             return $this->sendResponse($success, 'User login successfully.');
         } 

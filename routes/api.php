@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KanjiController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\VocabularyController;
 
 /*
@@ -32,6 +33,11 @@ Route::get('v1/quiz',[KanjiController::class,'Quiz'])->middleware('auth:sanctum'
 Route::post('v1/quiz-answer',[KanjiController::class,'QuizAnswer'])->middleware('auth:sanctum')->name('sendAnswer');
 Route::post('v1/kanji/loged-detail',[KanjiController::class,'getLogedDetail'])->middleware('auth:sanctum')->name('loged.kanjiDetail');
 Route::post('v1/vocabulary/loged-detail',[VocabularyController::class,'getLogedDetail'])->middleware('auth:sanctum')->name('loged.vocabularyDetail');
+//Test
+Route::get('test',[TestController::class,'Test'])->middleware('auth:sanctum')->name('test.get');
+Route::post('test-answer',[TestController::class,'TestResult'])->middleware('auth:sanctum')->name('test.sendAnswer');
+Route::get('exam/{level}',[TestController::class,'Exam'])->middleware('auth:sanctum')->name('test.get');
+Route::post('exam-answer',[TestController::class,'ExamResult'])->middleware('auth:sanctum')->name('test.sendAnswer');
 //UnAuth
 Route::get('v1/getMainInfo',[KanjiController::class,'getMainInfo'])->name('mainInfo');
 Route::post('v1/kanji/detail',[KanjiController::class,'getDetail'])->name('kanjiDetail');

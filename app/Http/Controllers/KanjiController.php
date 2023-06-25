@@ -86,7 +86,7 @@ class KanjiController extends BaseController
         }
         if(!$vocabularies_learned->isEmpty()){
             foreach($vocabularies_learned as $learned){
-                $tmp = Kanji::where('id', $learned->learnable_id)->get();
+                $tmp = Vocabulary::where('id', $learned->learnable_id)->get();
                 $vocabularies = $vocabularies->merge($tmp);
                 $vocabularies = $vocabularies->unique('id');
             }
@@ -104,7 +104,7 @@ class KanjiController extends BaseController
                 $result = new Collection;
                 $result = $result->merge($res);
                 $result = $result->merge($option);
-                $result->shuffle();
+                $result = $result->shuffle();
                 $temp = collect(["question" => $res[0]->character]);
                 for($i = 0; $i < 4; $i++){
                     $arr[$i] = ($result[$i]->pronounces[0]->Hiragana?$result[$i]->pronounces[0]->Hiragana:$result[$i]->pronounces[0]->Katakana);
@@ -123,7 +123,7 @@ class KanjiController extends BaseController
                 $result = new Collection;
                 $result = $result->merge($res);
                 $result = $result->merge($option);
-                $result->shuffle();
+                $result = $result->shuffle();
                 $temp = collect(["question" => $res[0]->word]);
                 for($i = 0; $i < 4; $i++){
                     $arr[$i] = $result[$i]->pronounce;

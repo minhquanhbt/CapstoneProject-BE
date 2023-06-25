@@ -140,7 +140,7 @@ class VocabularySeeder extends Seeder
         $kanji->vocabularies()->attach($vocabulary);
         $kanji = Kanji::where('character', '長')->first();
         $kanji->vocabularies()->attach($vocabulary);
-        $sample = missPronounces::insert(['pronounce' => 'いちょう' ,'vocabulary_id' => $vocabulary]);
+        $sample = missPronounces::insert(['pronounce' => 'いちう' ,'vocabulary_id' => $vocabulary]);
         $sample = missPronounces::insert(['pronounce' => 'いなか' ,'vocabulary_id' => $vocabulary]);
         $sample = missPronounces::insert(['pronounce' => 'いいちょう' ,'vocabulary_id' => $vocabulary]);
         $sample = missPronounces::insert(['pronounce' => 'いいちょ' ,'vocabulary_id' => $vocabulary]);
