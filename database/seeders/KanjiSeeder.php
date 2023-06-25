@@ -215,7 +215,7 @@ class KanjiSeeder extends Seeder
             Kanji::insert(['character' => '院','group' => 'viện','meaning' => 'viện', 'level' => 4]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'in','Hiragana'=>'','Katakana'=>'イン','kanji_id'=>'37']);
             // 8
-            Kanji::insert(['character' => '員   ','group' => 'viên','meaning' => '(nhân) viên', 'level' => 4]);
+            Kanji::insert(['character' => '員','group' => 'viên','meaning' => '(nhân) viên', 'level' => 4]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'in','Hiragana'=>'','Katakana'=>'イン','kanji_id'=>'38']);
             // 9
             Kanji::insert(['character' => '運','group' => 'vận','meaning' => 'số phận, vận chuyển, mang/vác', 'level' => 4]);
@@ -297,7 +297,7 @@ class KanjiSeeder extends Seeder
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kan','Hiragana'=>'','Katakana'=>'カン','kanji_id'=>'54']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'yakata','Hiragana'=>'','Katakana'=>'やかた','kanji_id'=>'54']);
             // 25
-            Kanji::insert(['character' => '漢','group' => 'hán','meaning' => '', 'level' => 4]);
+            Kanji::insert(['character' => '漢','group' => 'hán','meaning' => 'Nhà Hán. Nước Tàu', 'level' => 4]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'kan','Hiragana'=>'','Katakana'=>'カン','kanji_id'=>'55']);
             // 26
             Kanji::insert(['character' => '寒','group' => 'hàn','meaning' => 'lạnh', 'level' => 4]);
@@ -503,7 +503,7 @@ class KanjiSeeder extends Seeder
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'to(bu)','Hiragana'=>'と(ぶ)','Katakana'=>'','kanji_id'=>'100']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'to(basu)','Hiragana'=>'と(ばす)','Katakana'=>'','kanji_id'=>'100']);
             // 11
-            Kanji::insert(['character' => '駐','group' => 'trú','meaning' => '', 'level' => 2]);
+            Kanji::insert(['character' => '駐','group' => 'trú','meaning' => 'Đóng. Lưu ở lại chỗ nào cũng gọi là trú.', 'level' => 2]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'chuu','Hiragana'=>'','Katakana'=>'チュウ','kanji_id'=>'101']);
             // 12
             Kanji::insert(['character' => '捨','group' => 'xả','meaning' => 'vứt, ném', 'level' => 2]);
@@ -548,7 +548,7 @@ class KanjiSeeder extends Seeder
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsu(keru)','Hiragana'=>'つ(ける)','Katakana'=>'','kanji_id'=>'110']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsuki','Hiragana'=>'つき','Katakana'=>'','kanji_id'=>'110']);
             // 21
-            Kanji::insert(['character' => '案','group' => 'án','meaning' => 'dự thảo, phƣơng án, đề xuất', 'level' => 2]);
+            Kanji::insert(['character' => '案','group' => 'án','meaning' => 'dự thảo, phương án, đề xuất', 'level' => 2]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'an','Hiragana'=>'','Katakana'=>'アン','kanji_id'=>'111']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'tsukue','Hiragana'=>'つくえ','Katakana'=>'','kanji_id'=>'111']);
             // 22
@@ -587,7 +587,7 @@ class KanjiSeeder extends Seeder
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'ou','Hiragana'=>'','Katakana'=>'オウ','kanji_id'=>'119']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'o(su)','Hiragana'=>'お(す)','Katakana'=>'','kanji_id'=>'119']);
             // 30
-            Kanji::insert(['character' => '準','group' => 'chuẩn','meaning' => '', 'level' => 2]);
+            Kanji::insert(['character' => '準','group' => 'chuẩn','meaning' => 'Chuẩn,Thứ tự; lần lượt', 'level' => 2]);
             Pronounce::insert(['Type'=>'Onyomi','Romanji'=>'jun','Hiragana'=>'','Katakana'=>'ジュン','kanji_id'=>'120']);
             Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>'mizumori','Hiragana'=>'みずもり','Katakana'=>'','kanji_id'=>'120']);
         }
