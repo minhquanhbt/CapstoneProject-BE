@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $link='https://pbl5storage.s3.ap-southeast-1.amazonaws.com/images/avatars/avatar.png';
         User::insert([
             'name' => 'Super Admin',
             'username' => 'Super_Admin',
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
         User::insert([
             'name' => 'Template User 1',
@@ -36,6 +38,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
         User::insert([
             'name' => 'Template User 2',
@@ -48,6 +51,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
         User::insert([
             'name' => 'Template User 3',
@@ -60,6 +64,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
         User::insert([
             'name' => 'Template User 4',
@@ -72,6 +77,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
         User::insert([
             'name' => 'Template User 5',
@@ -84,6 +90,7 @@ class UserSeeder extends Seeder
             'token' => Str::random(16),
             'email_verified_at' => now(),
             'remember_token' => '1234567890',
+            'avatar' => $link,
         ]);
     }
 }

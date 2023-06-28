@@ -36,6 +36,7 @@ class User extends Authenticatable
         'token',
         'point',
         'role',
+        'avatar',
         'created_at',
         'updated_at',
     ];

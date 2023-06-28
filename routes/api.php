@@ -44,3 +44,5 @@ Route::post('v1/kanji/detail',[KanjiController::class,'getDetail'])->name('kanji
 Route::post('v1/vocabulary/detail',[VocabularyController::class,'getDetail'])->name('vocabularyDetail');
 //search
 Route::post('search',[VocabularyController::class,'search'])->name('search');
+//Kanji
+//Vocabulary
