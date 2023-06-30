@@ -9,8 +9,11 @@ use Illuminate\Support\Collection;
 use App\Models\Kanji;
 use App\Models\Learned;
 use App\Models\missPronounces;
+use App\Models\MeaningVietnamese;
+use App\Models\ExampleVietnamese;
 use App\Models\Vocabulary;
 use App\Models\User;
+use Validator;
 
 
 class VocabularyController extends BaseController
@@ -88,7 +91,8 @@ class VocabularyController extends BaseController
                 'word' => 'required|max:5',
                 'pronounce' => 'required|max:1024',
                 'meaning' => 'required',
-                'example' => 'require',
+                'examplej' => 'require',
+                'examplev' => 'require',
                 'level' => 'required'
             ]);
             $user = Auth::user();
@@ -98,14 +102,17 @@ class VocabularyController extends BaseController
                     'pronounce' =>$request->pronounce,
                     'level' => $request->level
                 ]);
-                foreach($request->meaning as $meaning){
-                    $mean = MeaningVietnamese::insertGetId(['meaning' => $meaning[0],'vocabulary_id' => $vocabulary]);
-                    ExampleVietnamese::insert(['japanese_example' => $meaning[1], 
-                                            'vietnamese_example' => $meaning[2],'meaning_vietnamese_id' => $mean]);
+                for($i = 0; $i<sizeof($request->meaning)-1;$i++){
+                    $mean = MeaningVietnamese::insertGetId(['meaning' => $request->meaning[$i],'vocabulary_id' => $vocabulary]);
+                    ExampleVietnamese::insert(['japanese_example' => $request->examplej[$i], 
+                                            'vietnamese_example' => $request->examplev[$i],'meaning_vietnamese_id' => $mean]);
                 }
-                foreach($request->kanji as $kanji){
-                    $kanji = Kanji::where('character', $request->kanji)->first();
-                    $kanji->vocabularies()->attach($vocabulary);
+                $chars = str_split($request->word);
+                foreach($chars as $kanji){
+                    if($kanji = Kanji::where('character', $request->kanji)->first())
+                    {
+                        $kanji->vocabularies()->attach($vocabulary);
+                    }
                 }
                 foreach($request->miss as $miss){
                     $sample = missPronounces::insert(['pronounce' => $miss ,'vocabulary_id' => $vocabulary]);
@@ -124,8 +131,9 @@ class VocabularyController extends BaseController
         try{
             Validator::make($request->all(),[
                 'character' => 'required|max:1',
-                'group' => 'required|max:1024',
                 'mean' => 'required|min:1',
+                'meaning' => 'required',
+                'example' => 'require',
                 'level' => 'required'
             ]);
             $user = Auth::user();
