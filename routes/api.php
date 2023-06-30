@@ -44,3 +44,9 @@ Route::post('v1/kanji/detail',[KanjiController::class,'getDetail'])->name('kanji
 Route::post('v1/vocabulary/detail',[VocabularyController::class,'getDetail'])->name('vocabularyDetail');
 //search
 Route::post('search',[VocabularyController::class,'search'])->name('search');
+//Kanji
+Route::post('v1/kanji/create',[KanjiController::class,'createNewKanji'])->middleware('auth:sanctum')->name('kanji.create');
+Route::post('v1/kanji/update',[KanjiController::class,'editKanji'])->middleware('auth:sanctum')->name('kanji.update');
+//Vocabulary
+Route::post('v1/vocabulary/create',[VocabularyController::class,'createNewVocabulary'])->middleware('auth:sanctum')->name('vocabulary.create');
+Route::post('v1/vocabulary/update',[VocabularyController::class,'editVocabulary'])->middleware('auth:sanctum')->name('vocabulary.update');

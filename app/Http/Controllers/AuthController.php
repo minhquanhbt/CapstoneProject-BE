@@ -26,6 +26,7 @@ class AuthController extends BaseController
             $success['email'] =  $user->email;
             $success['level'] =  $user->level;
             $success['point'] =  $user->point;
+            $success['avatar'] =  $user->avatar;
             $success['role'] =  $user->role;
             return $this->sendResponse($success, 'User login successfully.');
         } 
@@ -82,6 +83,12 @@ class AuthController extends BaseController
                     break;
             }
         }
+        $link='https://pbl5storage.s3.ap-southeast-1.amazonaws.com/images/avatars/avatar.png';
+        if ($request->hasFile('avatar')) {
+            $link = Storage::disk('s3')->put('images/avatars', $request->avatar);
+            $link = Storage::disk('s3')->url($link);
+            $link = 'https://pbl5storage.s3.ap-southeast-1.amazonaws.com'.$link;
+        }
         //create a new invite record
         $new = User::create([
             'email' => $request->email,
@@ -91,6 +98,7 @@ class AuthController extends BaseController
             'role' => USER::ROLE_USER,
             'level' => $level,
             'point' => $point,
+            'avatar' => $link,
             'password' => $password,
         ]);
         
@@ -109,7 +117,7 @@ class AuthController extends BaseController
             $msg->to($data['to'])->subject($data['subject'])
             ->html($message);
         });
-        return response()->json(['message' => 'verification request sent'], 200);
+        return response()->json([$new], 200);
     }
     /**
      * accept register request api

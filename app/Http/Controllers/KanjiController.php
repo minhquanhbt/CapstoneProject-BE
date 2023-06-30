@@ -9,9 +9,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kanji;
 use App\Models\Learned;
+use App\Models\Pronounce;
 use App\Models\missPronounces;
 use App\Models\Vocabulary;
 use App\Models\User;
+use Validator;
 
 class KanjiController extends BaseController
 {
@@ -261,6 +263,83 @@ class KanjiController extends BaseController
             return $this->sendResponse($result,($result?'Correct!':'Wrong'));
         }catch(Exception $e){
             return $this->sendError('Error!', ['error'=>$e], 400);
+        }
+    }
+
+    public function createNewKanji(Request $request){
+        try{
+            Validator::make($request->all(),[
+                'character' => 'required|max:1|unique',
+                'group' => 'required',
+                'mean' => 'required|min:1',
+                'level' => 'required',
+                'pronounce' => 'require'
+            ]);
+            $current = Auth::user();
+            if(Kanji::where('character', $request->character)->first()){
+                return response()->json(['message' => 'Already add this Kanji'], 400);
+            }
+            if($current->role == USER::ROLE_ADMIN){
+                $kanji = Kanji::insertGetId([
+                    'character' => $request->character,
+                    'group' => $request->group,
+                    'meaning' => $request->mean,
+                    'level' => $request->level,
+                ]);
+                for($i = 0; $i<sizeof($request->type)-1;$i++){
+                    if($request->type[$i] == 'Onyomi'){
+                        Pronounce::insert(['Type'=>'Onyomi','Romanji'=>$request->romanji[$i],'Hiragana'=>'','Katakana'=>$request->japanese[$i],'kanji_id'=>$kanji]);
+                    }
+                    if($request->type[$i] == 'Kunyomi'){
+                        Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>$request->romanji[$i],'Hiragana'=>$request->japanese[$i],'Katakana'=>'','kanji_id'=>$kanji]);
+                    }
+                }
+                return response()->json(['message' => 'Success'], 200);
+            }
+            else{
+                return response()->json(['message' => 'Permission denied'], 403);
+            }
+        }
+        catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function editKanji(Request $request){
+        try{
+            Validator::make($request->all(),[
+                'character' => 'required|max:1',
+                'group' => 'required',
+                'mean' => 'required|min:1',
+                'level' => 'required',
+                'pronounce' => 'require'
+            ]);
+            $user = Auth::user();
+            if($user->role == USER::ROLE_ADMIN){
+                $kanji = Kanji::find($request->id);
+                $kanji->upadte([
+                    'character' => $request->character,
+                    'group' => $request->group,
+                    'mean' => $request->mean,
+                    'level' => $request->level,
+                ]);
+                foreach($request->pronounce as $pronounce){
+                    if($pronounce->Type = 'Onyomi'){
+                        Pronounce::insert(['Type'=>'Onyomi','Romanji'=>$pronounce[1],'Hiragana'=>'','Katakana'=>$pronounce[2],'kanji_id'=>$kanji->$id]);
+                    }
+                    if($pronounce->Type = 'Kunyomi'){
+                        Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>$pronounce[1],'Hiragana'=>'','Katakana'=>$pronounce[2],'kanji_id'=>$kanji->$id]);
+                    }
+                }
+                $kanji->save();
+                return $kanji;
+            }
+            else{
+                return response()->json(['message' => 'Permission denied'], 403);
+            }
+        }
+        catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 }

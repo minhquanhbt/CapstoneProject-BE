@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Models\Kanji;
 use App\Models\Learned;
 use App\Models\missPronounces;
+use App\Models\MeaningVietnamese;
+use App\Models\ExampleVietnamese;
 use App\Models\Vocabulary;
 use App\Models\User;
+use Validator;
 
 
 class VocabularyController extends BaseController
@@ -79,5 +83,86 @@ class VocabularyController extends BaseController
         $result = $result->merge($kanji);
         $result = $result->merge($vocabulary);
         return $result;
+    }
+
+    public function createNewVocabulary(Request $request){
+        try{
+            Validator::make($request->all(),[
+                'word' => 'required|max:5',
+                'pronounce' => 'required|max:1024',
+                'meaning' => 'required',
+                'examplej' => 'require',
+                'examplev' => 'require',
+                'level' => 'required'
+            ]);
+            $user = Auth::user();
+            if($user->role == USER::ROLE_ADMIN){
+                $vocabulary = Vocabulary::insertGetId([
+                    'word' => $request->word,
+                    'pronounce' =>$request->pronounce,
+                    'level' => $request->level
+                ]);
+                for($i = 0; $i<sizeof($request->meaning)-1;$i++){
+                    $mean = MeaningVietnamese::insertGetId(['meaning' => $request->meaning[$i],'vocabulary_id' => $vocabulary]);
+                    ExampleVietnamese::insert(['japanese_example' => $request->examplej[$i], 
+                                            'vietnamese_example' => $request->examplev[$i],'meaning_vietnamese_id' => $mean]);
+                }
+                $chars = str_split($request->word);
+                foreach($chars as $kanji){
+                    if($kanji = Kanji::where('character', $request->kanji)->first())
+                    {
+                        $kanji->vocabularies()->attach($vocabulary);
+                    }
+                }
+                foreach($request->miss as $miss){
+                    $sample = missPronounces::insert(['pronounce' => $miss ,'vocabulary_id' => $vocabulary]);
+                }
+            }
+            else{
+                return response()->json(['message' => 'Permission denied'], 403);
+            }
+        }
+        catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function editVocabulary(Request $request){
+        try{
+            Validator::make($request->all(),[
+                'character' => 'required|max:1',
+                'mean' => 'required|min:1',
+                'meaning' => 'required',
+                'example' => 'require',
+                'level' => 'required'
+            ]);
+            $user = Auth::user();
+            if($user->role == USER::ROLE_ADMIN){
+                $vocabulary = Vocabulary::find($id);
+                $vocabulary->update([
+                    'word' => $request->word,
+                    'pronounce' =>$request->pronounce,
+                    'level' => $request->level
+                ]);
+                foreach($request->meaning as $meaning){
+                    $mean = MeaningVietnamese::insertGetId(['meaning' => $meaning[0],'vocabulary_id' => $vocabulary]);
+                    ExampleVietnamese::insert(['japanese_example' => $meaning[1], 
+                                            'vietnamese_example' => $meaning[2],'meaning_vietnamese_id' => $mean]);
+                }
+                foreach($request->kanji as $kanji){
+                    $kanji = Kanji::where('character', $request->kanji)->first();
+                    $kanji->vocabularies()->attach($vocabulary);
+                }
+                foreach($request->miss as $miss){
+                    $sample = missPronounces::insert(['pronounce' => $miss ,'vocabulary_id' => $vocabulary]);
+                }
+            }
+            else{
+                return response()->json(['message' => 'Permission denied'], 403);
+            }
+        }
+        catch(Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 }
