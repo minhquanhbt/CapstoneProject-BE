@@ -286,11 +286,11 @@ class KanjiController extends BaseController
                     'meaning' => $request->mean,
                     'level' => $request->level,
                 ]);
-                for($i = 0; $i<sizeof($request->type)-1;$i++){
-                    if($request->type[$i] == 'Onyomi'){
+                for($i = 0; $i<sizeof($request->type);$i++){
+                    if($request->type[$i]){
                         Pronounce::insert(['Type'=>'Onyomi','Romanji'=>$request->romanji[$i],'Hiragana'=>'','Katakana'=>$request->japanese[$i],'kanji_id'=>$kanji]);
                     }
-                    if($request->type[$i] == 'Kunyomi'){
+                    if(!$request->type[$i]){
                         Pronounce::insert(['Type'=>'Kunyomi','Romanji'=>$request->romanji[$i],'Hiragana'=>$request->japanese[$i],'Katakana'=>'','kanji_id'=>$kanji]);
                     }
                 }
