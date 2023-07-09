@@ -102,7 +102,7 @@ class VocabularyController extends BaseController
                     'pronounce' =>$request->pronounce,
                     'level' => $request->level
                 ]);
-                for($i = 0; $i<sizeof($request->meaning)-1;$i++){
+                for($i = 0; $i<sizeof($request->meaning);$i++){
                     $mean = MeaningVietnamese::insertGetId(['meaning' => $request->meaning[$i],'vocabulary_id' => $vocabulary]);
                     ExampleVietnamese::insert(['japanese_example' => $request->examplej[$i], 
                                             'vietnamese_example' => $request->examplev[$i],'meaning_vietnamese_id' => $mean]);
